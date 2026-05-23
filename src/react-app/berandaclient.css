@@ -1,0 +1,188 @@
+/* src/react-app/berandaclient.css */
+
+* {
+  box-sizing: border-box;
+}
+
+.client-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  position: relative;
+}
+
+/* Mobile Header disembunyikan di versi Laptop/Desktop */
+.mobile-header {
+  display: none;
+}
+
+/* Overlay disembunyikan secara default */
+.overlay {
+  display: none;
+}
+
+/* Sidebar Styles (Desktop View) */
+.sidebar {
+  width: 240px;
+  background-color: #ffffff;
+  border-right: 1px solid #e9ecef;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0;
+  flex-shrink: 0;
+  z-index: 1000; /* Memastikan sidebar selalu di atas */
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-logo {
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 1rem;
+}
+
+.brand-logo span,
+.sidebar-logo span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #007bff;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex-grow: 1; /* Mendorong profil user ke bawah */
+}
+
+.sidebar-menu li a {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  color: #495057;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.sidebar-menu li a:hover {
+  background-color: #f1f3f5;
+  color: #007bff;
+}
+
+.sidebar-menu li a.active {
+  background-color: #e7f5ff;
+  color: #007bff;
+  border-left: 4px solid #007bff;
+  padding-left: calc(1.5rem - 4px);
+}
+
+.user-profile-placeholder {
+  padding: 1.5rem;
+  border-top: 1px solid #e9ecef;
+}
+
+/* Main Content Styles */
+.client-content {
+  flex-grow: 1;
+  padding: 2rem;
+  max-width: 1000px;
+}
+
+.content-header h1 {
+  font-size: 1.75rem;
+  color: #212529;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.content-header p {
+  color: #6c757d;
+  font-size: 1rem;
+  margin-top: 0;
+}
+
+.info-card {
+  background-color: #ffffff;
+  border-left: 4px solid #007bff;
+  padding: 1.5rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  margin-top: 2rem;
+}
+
+.info-card h3 {
+  margin-top: 0;
+  color: #212529;
+}
+
+.info-card p {
+  color: #495057;
+  line-height: 1.6;
+}
+
+/* --- RESPONSIVE UNTUK SMARTPHONE (Lebar < 768px) --- */
+@media (max-width: 768px) {
+  .client-container {
+    flex-direction: column;
+  }
+
+  /* Tampilkan Header Mobile */
+  .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+    z-index: 998;
+  }
+
+  .burger-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+    padding: 0;
+  }
+
+  .desktop-only {
+    display: none; /* Sembunyikan logo sidebar bawaan jika di HP */
+  }
+
+  /* Jadikan Sidebar Off-Canvas (Tersembunyi di kiri) */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%); /* Sembunyikan ke kiri */
+    padding-top: 1.5rem;
+  }
+
+  /* Class saat tombol burger ditekan */
+  .sidebar.open {
+    transform: translateX(0); /* Munculkan sidebar */
+    box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+  }
+
+  /* Tampilkan latar belakang gelap saat menu terbuka */
+  .overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+  }
+
+  .client-content {
+    padding: 1.5rem 1rem;
+  }
+}
